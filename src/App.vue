@@ -4,7 +4,7 @@
   <div>store.state.count: {{ store.state.count }}</div>
 </template>
 
-<script>
+<script lang="ts">
 import { onMounted, reactive } from 'vue'
 import { useStore } from 'vuex'
 // import HelloWorld from './components/HelloWorld.vue'
@@ -14,7 +14,7 @@ export default {
   components: {
     // HelloWorld
   },
-  setup(props, context) {
+  setup(props: {}, context: {}) {
     console.log('context: ', context)
 
     const store = useStore()

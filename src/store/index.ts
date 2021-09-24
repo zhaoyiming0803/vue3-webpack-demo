@@ -1,5 +1,9 @@
 import { createStore } from 'vuex'
 
+interface State {
+  count: number
+}
+
 export default createStore({
   modules: {
     
@@ -12,7 +16,7 @@ export default createStore({
   },
 
   mutations: {
-    increment (state) {
+    increment (state: State) {
       state.count += 100
     }
   },
