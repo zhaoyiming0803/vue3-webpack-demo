@@ -7,6 +7,7 @@
 <script lang="ts">
 import { onMounted, reactive } from 'vue'
 import { useStore } from 'vuex'
+import { Dialog } from 'vant'
 // import HelloWorld from './components/HelloWorld.vue'
 
 export default {
@@ -17,7 +18,14 @@ export default {
   setup(props: {}, context: {}) {
     console.log('context: ', context)
 
+    // useStore 放到 Dialog.alert 下面会报错，原因待确认
     const store = useStore()
+
+    Dialog.alert({
+      message: 'Dialog'
+    })
+
+    console.log('store: ', store)
 
     const state = reactive({
       count: 0

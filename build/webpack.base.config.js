@@ -3,7 +3,7 @@
  * @author zhaoyiming
  * @since  2021/09/24
  */
-const merge = require('webpack-merge')
+const { merge } = require('webpack-merge')
 const tsImportPluginFactory = require('ts-import-plugin')
 
 const path = require('path')
@@ -41,22 +41,22 @@ module.exports = config => {
 			return args
 		})
 
-	// config.module.rule('ts').use('ts-loader').tap(options => {
-	// 	options = merge(options, {
-	// 		transpileOnly: true,
-	// 		getCustomTransformers: () => ({
-	// 			before: [tsImportPluginFactory({
-	// 				libraryName: 'vant',
-	// 				libraryDirectory: 'es',
-	// 				style: true
-	// 			})]
-	// 		}),
-	// 		compilerOptions: {
-	// 			module: 'es2015'
-	// 		}
-	// 	})
-	// 	return options
-	// })
+	config.module.rule('ts').use('ts-loader').tap(options => {
+		options = merge(options, {
+			transpileOnly: true,
+			getCustomTransformers: () => ({
+				before: [tsImportPluginFactory({
+					libraryName: 'vant',
+					libraryDirectory: 'es',
+					style: true
+				})]
+			}),
+			compilerOptions: {
+				module: 'es2015'
+			}
+		})
+		return options
+	})
 
 	config.plugin('copy').tap(args => {
 		args[0][0].from = resolve('src/static')
