@@ -25,7 +25,7 @@ export default {
       message: 'Dialog'
     })
 
-    console.log('store: ', store)
+    console.log('store: ', store.state.app.abc)
 
     const state = reactive({
       count: 0

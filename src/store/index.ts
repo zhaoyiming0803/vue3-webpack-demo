@@ -6,7 +6,13 @@ interface State {
 
 export default createStore({
   modules: {
-    
+    app: {
+      state () {
+        return {
+          abc: 123
+        }
+      }
+    }
   },
 
   state () {
